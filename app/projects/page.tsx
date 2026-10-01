@@ -24,8 +24,12 @@ export default function ProjectsPage() {
 
       <section className="border-b border-hairline">
         <div className="container-x grid gap-6 py-16 sm:grid-cols-2 md:py-20">
-          {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              delay={(index % 2) * 90}
+            />
           ))}
         </div>
       </section>
@@ -37,8 +41,13 @@ export default function ProjectsPage() {
             title="What clients say"
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure key={t.name} className="card flex flex-col p-6">
+            {testimonials.map((t, index) => (
+              <figure
+                key={t.name}
+                data-reveal
+                style={{ transitionDelay: `${index * 90}ms` }}
+                className="card flex flex-col p-6"
+              >
                 <blockquote className="flex-1 text-sm leading-relaxed text-fg-muted">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>

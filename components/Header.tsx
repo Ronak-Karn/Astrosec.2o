@@ -16,13 +16,18 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-hairline bg-ink/85 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
-        <Link href="/" aria-label="AstroSec home" className="shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo.jpg"
-            alt="AstroSec"
-            className="logo-blend h-9 w-auto md:h-10"
-          />
+        <Link
+          href="/"
+          aria-label="AstroSec home"
+          className="group flex shrink-0 items-center gap-3"
+        >
+          <span className="logo-badge h-12 w-12">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo-mark.jpg" alt="" />
+          </span>
+          <span className="text-lg font-semibold tracking-[0.18em] text-white">
+            ASTROSEC
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main">

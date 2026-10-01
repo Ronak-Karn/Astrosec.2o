@@ -7,12 +7,19 @@ export default function Footer() {
     <footer className="border-t border-hairline bg-ink">
       <div className="container-x grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo.jpg"
-            alt="AstroSec"
-            className="logo-blend h-10 w-auto"
-          />
+          <Link
+            href="/"
+            aria-label="AstroSec home"
+            className="inline-flex items-center gap-3"
+          >
+            <span className="logo-badge h-14 w-14">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/logo-mark.jpg" alt="" />
+            </span>
+            <span className="text-xl font-semibold tracking-[0.18em] text-white">
+              ASTROSEC
+            </span>
+          </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
             A security-first studio building AI systems, hardened
             infrastructure, and full-stack products.

@@ -1,7 +1,13 @@
 import type { Project } from "@/lib/data";
 import { ArrowUpRightIcon } from "@/components/Icons";
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({
+  project,
+  delay = 0,
+}: {
+  project: Project;
+  delay?: number;
+}) {
   const inner = (
     <>
       <div className="relative aspect-[16/10] overflow-hidden bg-panel">
@@ -37,7 +43,13 @@ export default function ProjectCard({ project }: { project: Project }) {
     </>
   );
 
-  const cls = "card group block overflow-hidden transition-colors duration-200 hover:border-accent/40";
+  const cls =
+    "card card-lift group block overflow-hidden transition-colors duration-200 hover:border-accent/40";
+
+  const revealProps = {
+    "data-reveal": true,
+    style: { transitionDelay: `${delay}ms` },
+  };
 
   if (project.href) {
     return (
@@ -46,11 +58,16 @@ export default function ProjectCard({ project }: { project: Project }) {
         target="_blank"
         rel="noopener noreferrer"
         className={cls}
+        {...revealProps}
       >
         {inner}
       </a>
     );
   }
 
-  return <article className={cls}>{inner}</article>;
+  return (
+    <article className={cls} {...revealProps}>
+      {inner}
+    </article>
+  );
 }

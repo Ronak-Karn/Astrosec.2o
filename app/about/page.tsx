@@ -23,8 +23,13 @@ export default function AboutPage() {
 
       <section className="border-b border-hairline">
         <div className="container-x grid grid-cols-1 divide-y divide-hairline sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {stats.map((stat) => (
-            <div key={stat.label} className="px-2 py-10 text-center sm:py-14">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              data-reveal
+              style={{ transitionDelay: `${index * 90}ms` }}
+              className="px-2 py-10 text-center sm:py-14"
+            >
               <p className="font-mono text-4xl font-medium text-accent md:text-5xl">
                 {stat.value}
               </p>
@@ -38,8 +43,13 @@ export default function AboutPage() {
         <div className="container-x py-16 md:py-20">
           <SectionHeading eyebrow="The team" title="The minds behind AstroSec" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((member) => (
-              <div key={member.name} className="card overflow-hidden">
+            {team.map((member, index) => (
+              <div
+                key={member.name}
+                data-reveal
+                style={{ transitionDelay: `${index * 90}ms` }}
+                className="card card-lift overflow-hidden"
+              >
                 <div className="aspect-[4/3] overflow-hidden bg-panel">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

@@ -94,7 +94,11 @@ body {
   font-weight: 500;
   line-height: 1;
   transition: background-color 150ms ease, border-color 150ms ease,
-    color 150ms ease;
+    color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 10px 24px -12px rgba(34, 211, 238, 0.45);
 }
 
 .btn-primary {
@@ -127,7 +131,22 @@ body {
   border: 1px solid var(--color-hairline);
   border-radius: 0.9rem;
   background-color: rgba(255, 255, 255, 0.02);
-  transition: border-color 200ms ease;
+  transition: border-color 200ms ease, transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+/* richer hover lift for cards */
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 14px 34px -14px rgba(34, 211, 238, 0.18),
+    0 10px 24px -18px rgba(0, 0, 0, 0.9);
+}
+
+/* buttons lift slightly on hover */
+.btn-primary:hover:not(:disabled),
+.btn-ghost:hover {
+  transform: translateY(-2px);
 }
 
 .tag {
@@ -208,4 +227,124 @@ body {
 .field-input:focus {
   outline: none;
   border-color: rgba(34, 211, 238, 0.6);
+}
+
+/* ---------- hero version badge (large) ---------- */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: 999px;
+  background-color: rgba(34, 211, 238, 0.07);
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero-badge::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  animation: badge-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.75);
+  }
+}
+
+/* ---------- circular logo badge ---------- */
+
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background-color: var(--color-panel);
+  transition: border-color 200ms ease;
+}
+
+a:hover .logo-badge {
+  border-color: rgba(34, 211, 238, 0.55);
+}
+
+.logo-badge img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ---------- custom cursor ring ---------- */
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid rgba(34, 211, 238, 0.75);
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 250ms ease, background-color 200ms ease,
+    border-color 200ms ease;
+  will-change: transform;
+}
+
+.cursor-ring.is-active {
+  opacity: 1;
+}
+
+.cursor-ring.is-hover {
+  background-color: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.95);
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ---------- scroll reveal ---------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 550ms ease, transform 550ms ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-badge::before {
+    animation: none;
+  }
 }

@@ -52,22 +52,26 @@ export default function ContactPage() {
 
       <section className="border-b border-hairline">
         <div className="container-x grid gap-10 py-16 md:grid-cols-[1fr_340px] md:py-20">
-          <ContactForm />
+          <div data-reveal>
+            <ContactForm />
+          </div>
 
           <aside className="flex flex-col gap-4">
-            {channels.map((channel) => {
+            {channels.map((channel, index) => {
               const Icon = channel.icon;
               return (
                 <a
                   key={channel.label}
                   href={channel.href}
+                  data-reveal
+                  style={{ transitionDelay: `${index * 80}ms` }}
                   target={channel.href.startsWith("http") ? "_blank" : undefined}
                   rel={
                     channel.href.startsWith("http")
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="card group flex items-center gap-4 p-5 transition-colors duration-200 hover:border-accent/40"
+                  className="card card-lift group flex items-center gap-4 p-5 transition-colors duration-200 hover:border-accent/40"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-hairline bg-accent/10 text-accent">
                     <Icon className="h-5 w-5" />

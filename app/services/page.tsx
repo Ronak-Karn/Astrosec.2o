@@ -30,7 +30,7 @@ export default function ServicesPage() {
           className="scroll-mt-24 border-b border-hairline"
         >
           <div className="container-x grid gap-10 py-16 md:grid-cols-[280px_1fr] md:py-20">
-            <div>
+            <div data-reveal>
               <p className="font-mono text-sm text-accent">{group.number}</p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">
                 {group.title}
@@ -41,10 +41,12 @@ export default function ServicesPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {group.services.map((service) => (
+              {group.services.map((service, index) => (
                 <div
                   key={service.title}
-                  className="card p-6 transition-colors duration-200 hover:border-accent/40"
+                  data-reveal
+                  style={{ transitionDelay: `${index * 90}ms` }}
+                  className="card card-lift p-6 transition-colors duration-200 hover:border-accent/40"
                 >
                   <h3 className="text-base font-semibold text-white">
                     {service.title}
