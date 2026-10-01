@@ -1,30 +1,23 @@
 import Link from "next/link";
-import { ArrowIcon } from "@/components/Icons";
 
 export function SectionHeading({
-  eyebrow,
   title,
   description,
   align = "left",
 }: {
-  eyebrow: string;
   title: string;
   description?: string;
   align?: "left" | "center";
 }) {
   return (
     <div
-      data-reveal
-      className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
+      className={
+        align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"
+      }
     >
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-        {title}
-      </h2>
+      <h2 className="display text-3xl text-white md:text-[2.6rem]">{title}</h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-fg-muted md:text-lg">
-          {description}
-        </p>
+        <p className="lede mt-5">{description}</p>
       )}
     </div>
   );
@@ -32,26 +25,23 @@ export function SectionHeading({
 
 export function CTABand() {
   return (
-    <section className="border-t border-hairline">
-      <div
-        data-reveal
-        className="container-x flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center md:py-20"
-      >
+    <section className="bg-paper text-ink">
+      <div className="container-x flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-end md:py-24">
         <div>
-          <p className="eyebrow">Start a project</p>
-          <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <h2 className="display max-w-xl text-3xl text-ink md:text-[2.6rem]">
             Have something to build — or to secure?
           </h2>
-          <p className="mt-3 max-w-xl text-base text-fg-muted">
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-paper-muted">
             Tell us what you&apos;re working on. We reply within one business
             day.
           </p>
         </div>
-        <div className="flex shrink-0 gap-3">
-          <Link href="/contact" className="btn-primary">
-            Get in touch <ArrowIcon className="h-4 w-4" />
-          </Link>
-        </div>
+        <Link
+          href="/contact"
+          className="btn-invert inline-flex shrink-0 items-center gap-2 rounded-lg px-6 py-3.5 text-base font-medium"
+        >
+          Get in touch
+        </Link>
       </div>
     </section>
   );

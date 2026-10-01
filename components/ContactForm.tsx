@@ -39,7 +39,7 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="card flex flex-col items-start gap-4 p-8">
-        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-accent/10 text-accent">
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-base text-white">
           ✓
         </span>
         <h3 className="text-xl font-semibold text-white">Message sent</h3>

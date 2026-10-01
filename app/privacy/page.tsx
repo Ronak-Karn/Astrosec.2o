@@ -54,7 +54,6 @@ export default function PrivacyPage() {
     <section className="pt-32 pb-20 md:pt-40">
       <div className="container-x max-w-3xl">
         <SectionHeading
-          eyebrow="Legal"
           title="Privacy Policy"
           description="Last updated: October 2026"
         />
@@ -94,14 +93,14 @@ export default function PrivacyPage() {
               Questions about this policy or our security protocols? Email{" "}
               <a
                 href={`mailto:${site.email}`}
-                className="text-accent hover:underline"
+                className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
               >
                 {site.email}
               </a>{" "}
               or call{" "}
               <a
                 href={`tel:${site.phoneHref}`}
-                className="text-accent hover:underline"
+                className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
               >
                 {site.phone}
               </a>

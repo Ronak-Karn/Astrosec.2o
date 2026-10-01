@@ -1,5 +1,4 @@
 import type { Project } from "@/lib/data";
-import { ArrowUpRightIcon } from "@/components/Icons";
 
 export default function ProjectCard({
   project,
@@ -10,46 +9,32 @@ export default function ProjectCard({
 }) {
   const inner = (
     <>
-      <div className="relative aspect-[16/10] overflow-hidden bg-panel">
+      <div className="aspect-[16/10] overflow-hidden rounded-xl bg-panel">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.image}
           alt={project.title}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+          className="h-full w-full object-cover opacity-95 transition-opacity duration-200 group-hover:opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
       </div>
 
-      <div className="p-6">
-        <p className="eyebrow">{project.category}</p>
-        <h3 className="mt-3 flex items-center gap-2 text-lg font-semibold text-white">
+      <div className="pt-5">
+        <p className="text-[0.85rem] text-fg-muted">{project.category}</p>
+        <h3 className="mt-1.5 text-xl font-semibold tracking-tight text-white">
           {project.title}
-          {project.href && (
-            <ArrowUpRightIcon className="h-4 w-4 text-fg-muted transition-colors duration-150 group-hover:text-accent" />
-          )}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+        <p className="mt-2 text-[0.95rem] leading-relaxed text-fg-muted">
           {project.description}
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span key={tag} className="tag">
-              {tag}
-            </span>
-          ))}
-        </div>
+        <p className="mt-3 text-[0.85rem] text-fg-muted">
+          {project.tags.join(", ")}
+        </p>
       </div>
     </>
   );
 
-  const cls =
-    "card card-lift group block overflow-hidden transition-colors duration-200 hover:border-accent/40";
-
-  const revealProps = {
-    "data-reveal": true,
-    style: { transitionDelay: `${delay}ms` },
-  };
+  const cls = "group block";
 
   if (project.href) {
     return (
@@ -58,7 +43,7 @@ export default function ProjectCard({
         target="_blank"
         rel="noopener noreferrer"
         className={cls}
-        {...revealProps}
+        style={{ transitionDelay: `${delay}ms` }}
       >
         {inner}
       </a>
@@ -66,7 +51,7 @@ export default function ProjectCard({
   }
 
   return (
-    <article className={cls} {...revealProps}>
+    <article className={cls} style={{ transitionDelay: `${delay}ms` }}>
       {inner}
     </article>
   );

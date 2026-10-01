@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/data";
 import { SectionHeading } from "@/components/UI";
-import { InstagramIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/Icons";
+import {
+  InstagramIcon,
+  LinkedInIcon,
+  MailIcon,
+  PhoneIcon,
+} from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -40,10 +45,9 @@ const channels = [
 export default function ContactPage() {
   return (
     <>
-      <section className="border-b border-hairline pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container-x">
+      <section className="border-b border-hairline">
+        <div className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
           <SectionHeading
-            eyebrow="Contact"
             title="Let's talk about your project."
             description="Fill in the form or reach out directly — we reply within one business day. NDAs available before any details are shared."
           />
@@ -51,36 +55,32 @@ export default function ContactPage() {
       </section>
 
       <section className="border-b border-hairline">
-        <div className="container-x grid gap-10 py-16 md:grid-cols-[1fr_340px] md:py-20">
-          <div data-reveal>
-            <ContactForm />
-          </div>
+        <div className="container-x grid gap-12 py-16 md:grid-cols-[1fr_320px] md:py-20">
+          <ContactForm />
 
-          <aside className="flex flex-col gap-4">
-            {channels.map((channel, index) => {
+          <aside className="border-t border-hairline md:border-t-0">
+            {channels.map((channel) => {
               const Icon = channel.icon;
               return (
                 <a
                   key={channel.label}
                   href={channel.href}
-                  data-reveal
-                  style={{ transitionDelay: `${index * 80}ms` }}
                   target={channel.href.startsWith("http") ? "_blank" : undefined}
                   rel={
                     channel.href.startsWith("http")
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="card card-lift group flex items-center gap-4 p-5 transition-colors duration-200 hover:border-accent/40"
+                  className="flex items-center gap-4 border-b border-hairline py-5 transition-colors duration-150 hover:bg-white/[0.025] md:px-3"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-hairline bg-accent/10 text-accent">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center text-fg-muted">
                     <Icon className="h-5 w-5" />
                   </span>
                   <span>
-                    <span className="block font-mono text-[0.68rem] uppercase tracking-[0.14em] text-fg-muted">
+                    <span className="block text-[0.85rem] text-fg-muted">
                       {channel.label}
                     </span>
-                    <span className="block text-sm text-white">
+                    <span className="block text-[0.98rem] text-white">
                       {channel.value}
                     </span>
                   </span>
