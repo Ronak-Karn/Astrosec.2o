@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AstroSec 2.0
 
-## Getting Started
+Marketing website for **AstroSec** — cybersecurity, AI systems, and full-stack engineering studio.
 
-First, run the development server:
+Built with [Next.js 16](https://nextjs.org) (App Router, Turbopack), [React 19](https://react.dev), TypeScript, and [Tailwind CSS v4](https://tailwindcss.com).
+
+## Pages
+
+| Route         | Purpose                                   |
+| ------------- | ----------------------------------------- |
+| `/`           | Hero, stats, capabilities, process, work  |
+| `/services`   | Service catalog (AI, security, engineering) |
+| `/projects`   | Portfolio + testimonials                  |
+| `/about`      | Team & company story                      |
+| `/contact`    | Contact form + direct channels            |
+| `/privacy`    | Privacy policy                            |
+| `/terms`      | Terms of service                          |
+| `/api/contact` | Serverless endpoint that delivers form submissions by email |
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # local dev server (http://localhost:3000)
+npm run build     # production build
+npm run lint      # eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The contact form emails via [Resend](https://resend.com). Copy `.env.example` to `.env.local`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+RESEND_API_KEY=re_xxxxxxxx          # required to actually deliver email
+CONTACT_TO_EMAIL=info@astrosec.in   # optional, defaults to info@astrosec.in
+CONTACT_FROM_EMAIL=AstroSec <onboarding@resend.dev>  # optional
+```
 
-## Learn More
+Without `RESEND_API_KEY`, submissions are logged server-side instead of sent (the site keeps working; nothing is delivered).
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pushed to GitHub and deployed on Vercel. Env vars for production are set in the Vercel project settings.
