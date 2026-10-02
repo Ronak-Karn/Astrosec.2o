@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/data";
 import { SectionHeading } from "@/components/UI";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -57,62 +58,64 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <section className="pt-32 pb-20 md:pt-40">
-      <div className="container-x max-w-3xl">
-        <SectionHeading
-          title="Terms of Service"
-          description="Last updated: October 2026"
-        />
+    <PageTransition>
+      <section className="pt-32 pb-20 md:pt-40">
+        <div data-blur className="container-x max-w-3xl">
+          <SectionHeading
+            title="Terms of Service"
+            description="Last updated: October 2026"
+          />
 
-        <div className="mt-10 space-y-10">
-          <p className="text-sm leading-relaxed text-fg-muted">
-            By accessing our website or engaging our services, you agree to be
-            bound by these Terms of Service. Please read them carefully.
-          </p>
-
-          {sections.map((section) => (
-            <div key={section.title}>
-              <h2 className="text-lg font-semibold text-white">
-                {section.title}
-              </h2>
-              <div className="mt-3 space-y-3">
-                {section.paragraphs.map((paragraph) => (
-                  <p
-                    key={paragraph.slice(0, 32)}
-                    className="text-sm leading-relaxed text-fg-muted"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
-
-          <div>
-            <h2 className="text-lg font-semibold text-white">
-              8. Contact information
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-              For legal inquiries, contract discussions, or questions regarding
-              these terms, email{" "}
-              <a
-                href={`mailto:${site.email}`}
-                className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
-              >
-                {site.email}
-              </a>{" "}
-              or call{" "}
-              <a
-                href={`tel:${site.phoneHref}`}
-                className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
-              >
-                {site.phone}
-              </a>
-              .
+          <div className="mt-10 space-y-10">
+            <p className="text-sm leading-relaxed text-fg-muted">
+              By accessing our website or engaging our services, you agree to
+              be bound by these Terms of Service. Please read them carefully.
             </p>
+
+            {sections.map((section) => (
+              <div key={section.title}>
+                <h2 className="text-lg font-semibold text-white">
+                  {section.title}
+                </h2>
+                <div className="mt-3 space-y-3">
+                  {section.paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph.slice(0, 32)}
+                      className="text-sm leading-relaxed text-fg-muted"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            <div>
+              <h2 className="text-lg font-semibold text-white">
+                8. Contact information
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                For legal inquiries, contract discussions, or questions
+                regarding these terms, email{" "}
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                >
+                  {site.email}
+                </a>{" "}
+                or call{" "}
+                <a
+                  href={`tel:${site.phoneHref}`}
+                  className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                >
+                  {site.phone}
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </PageTransition>
   );
 }

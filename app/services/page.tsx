@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { serviceGroups } from "@/lib/data";
 import { SectionHeading, CTABand } from "@/components/UI";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <>
+    <PageTransition>
       <section className="border-b border-hairline">
-        <div className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
+        <div data-blur className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
           <SectionHeading
             title="Three disciplines. One accountable team."
             description="From finding the holes in your infrastructure to shipping the product itself — it all happens under one roof, with security in mind from the first commit."
@@ -27,7 +28,10 @@ export default function ServicesPage() {
           id={group.id}
           className="scroll-mt-24 border-b border-hairline"
         >
-          <div className="container-x grid gap-8 py-16 md:grid-cols-[300px_1fr] md:gap-14 md:py-20">
+          <div
+            data-blur
+            className="container-x grid gap-8 py-16 md:grid-cols-[300px_1fr] md:gap-14 md:py-20"
+          >
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-white md:text-[1.75rem]">
                 {group.title}
@@ -57,7 +61,10 @@ export default function ServicesPage() {
       ))}
 
       <section className="border-b border-hairline">
-        <div className="container-x flex flex-col items-start justify-between gap-6 py-14 md:flex-row md:items-center">
+        <div
+          data-blur
+          className="container-x flex flex-col items-start justify-between gap-6 py-14 md:flex-row md:items-center"
+        >
           <p className="max-w-xl text-lg text-fg-muted">
             Not sure what you need? Describe the problem — we&apos;ll tell you
             honestly whether we&apos;re the right fit.
@@ -69,6 +76,6 @@ export default function ServicesPage() {
       </section>
 
       <CTABand />
-    </>
+    </PageTransition>
   );
 }

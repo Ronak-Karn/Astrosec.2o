@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { team, stats } from "@/lib/data";
 import { SectionHeading, CTABand } from "@/components/UI";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
+    <PageTransition>
       <section className="border-b border-hairline">
-        <div className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
+        <div data-blur className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
           <SectionHeading
             title="Security isn't a feature. It's the foundation."
             description="AstroSec closes the gap between high-performance software, strong security, and a seamless client experience. We build the product and defend it — so you only deal with one team."
@@ -21,7 +22,10 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-hairline">
-        <div className="container-x grid grid-cols-1 divide-y divide-hairline sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        <div
+          data-blur
+          className="container-x grid grid-cols-1 divide-y divide-hairline sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+        >
           {stats.map((stat) => (
             <div key={stat.label} className="px-2 py-10 text-center sm:py-14">
               <p className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
@@ -34,7 +38,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-hairline">
-        <div className="container-x py-16 md:py-24">
+        <div data-blur className="container-x py-16 md:py-24">
           <SectionHeading title="The minds behind AstroSec" />
 
           <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -65,7 +69,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-hairline">
-        <div className="container-x max-w-3xl py-16 md:py-20">
+        <div data-blur className="container-x max-w-3xl py-16 md:py-20">
           <SectionHeading
             title="The extended team"
             description="Beyond our core leadership, AstroSec collaborates with a network of freelance developers, designers, and technical specialists — so every project gets exactly the expertise it needs, without compromising on standards."
@@ -74,6 +78,6 @@ export default function AboutPage() {
       </section>
 
       <CTABand />
-    </>
+    </PageTransition>
   );
 }

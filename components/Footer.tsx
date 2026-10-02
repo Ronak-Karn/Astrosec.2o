@@ -4,7 +4,7 @@ import { InstagramIcon, LinkedInIcon } from "@/components/Icons";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-hairline bg-ink">
+    <footer className="border-t border-hairline">
       <div className="container-x grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
           <Link

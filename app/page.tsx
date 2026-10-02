@@ -3,6 +3,7 @@ import Link from "next/link";
 import { capabilities, process, projects, site, stats } from "@/lib/data";
 import { SectionHeading, CTABand } from "@/components/UI";
 import ProjectCard from "@/components/ProjectCard";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.tagline}`,
@@ -13,9 +14,9 @@ export default function HomePage() {
   const featured = projects.filter((p) => p.featured).slice(0, 3);
 
   return (
-    <>
+    <PageTransition>
       {/* ---------------- hero ---------------- */}
-      <section className="border-b border-hairline bg-ink-deep">
+      <section className="border-b border-hairline">
         <div className="container-x hero-seq py-28 md:py-36">
           <span className="hero-badge">AstroSec 2.0</span>
           <h1 className="display mt-8 max-w-4xl text-[clamp(2.6rem,7vw,4.6rem)] text-white">
@@ -39,7 +40,10 @@ export default function HomePage() {
 
       {/* ---------------- stats: the white band ---------------- */}
       <section className="bg-paper text-ink">
-        <div className="container-x grid grid-cols-1 divide-y divide-hairline-dark sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        <div
+          data-blur
+          className="container-x grid grid-cols-1 divide-y divide-hairline-dark sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+        >
           {stats.map((stat) => (
             <div key={stat.label} className="px-2 py-12 text-center sm:py-14">
               <p className="text-5xl font-semibold tracking-tight text-ink md:text-6xl">
@@ -55,7 +59,7 @@ export default function HomePage() {
 
       {/* ---------------- capabilities: open rows, no cards ---------------- */}
       <section className="border-b border-hairline">
-        <div className="container-x py-20 md:py-28">
+        <div data-blur className="container-x py-20 md:py-28">
           <SectionHeading
             title="Deep backend security. High-end execution."
             description="Three disciplines under one roof — the people who build your product are the same people who secure it."
@@ -82,7 +86,7 @@ export default function HomePage() {
 
       {/* ---------------- process: a real sequence, so numbering is earned ---------------- */}
       <section className="border-b border-hairline">
-        <div className="container-x py-20 md:py-28">
+        <div data-blur className="container-x py-20 md:py-28">
           <SectionHeading title="A process without surprises" />
 
           <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -105,7 +109,7 @@ export default function HomePage() {
 
       {/* ---------------- selected work: borderless gallery ---------------- */}
       <section className="border-b border-hairline">
-        <div className="container-x py-20 md:py-28">
+        <div data-blur className="container-x py-20 md:py-28">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               title="Recent highlights"
@@ -128,6 +132,6 @@ export default function HomePage() {
       </section>
 
       <CTABand />
-    </>
+    </PageTransition>
   );
 }

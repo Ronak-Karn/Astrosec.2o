@@ -26,7 +26,7 @@ export function SectionHeading({
 export function CTABand() {
   return (
     <section className="bg-paper text-ink">
-      <div className="container-x flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-end md:py-24">
+      <div data-blur className="container-x flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-end md:py-24">
         <div>
           <h2 className="display max-w-xl text-3xl text-ink md:text-[2.6rem]">
             Have something to build — or to secure?

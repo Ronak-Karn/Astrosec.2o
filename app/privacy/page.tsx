@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/data";
 import { SectionHeading } from "@/components/UI";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -51,64 +52,66 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <section className="pt-32 pb-20 md:pt-40">
-      <div className="container-x max-w-3xl">
-        <SectionHeading
-          title="Privacy Policy"
-          description="Last updated: October 2026"
-        />
+    <PageTransition>
+      <section className="pt-32 pb-20 md:pt-40">
+        <div data-blur className="container-x max-w-3xl">
+          <SectionHeading
+            title="Privacy Policy"
+            description="Last updated: October 2026"
+          />
 
-        <div className="mt-10 space-y-10">
-          <p className="text-sm leading-relaxed text-fg-muted">
-            Because our core business revolves around securing infrastructure,
-            we take data privacy with the utmost seriousness. This policy
-            explains how we collect, use, and protect your personal and
-            corporate information when you use our website or engage our
-            services.
-          </p>
-
-          {sections.map((section) => (
-            <div key={section.title}>
-              <h2 className="text-lg font-semibold text-white">
-                {section.title}
-              </h2>
-              <div className="mt-3 space-y-3">
-                {section.body.map((paragraph) => (
-                  <p
-                    key={paragraph.slice(0, 32)}
-                    className="text-sm leading-relaxed text-fg-muted"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
-
-          <div>
-            <h2 className="text-lg font-semibold text-white">
-              7. Contact us
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-              Questions about this policy or our security protocols? Email{" "}
-              <a
-                href={`mailto:${site.email}`}
-                className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
-              >
-                {site.email}
-              </a>{" "}
-              or call{" "}
-              <a
-                href={`tel:${site.phoneHref}`}
-                className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
-              >
-                {site.phone}
-              </a>
-              .
+          <div className="mt-10 space-y-10">
+            <p className="text-sm leading-relaxed text-fg-muted">
+              Because our core business revolves around securing
+              infrastructure, we take data privacy with the utmost seriousness.
+              This policy explains how we collect, use, and protect your
+              personal and corporate information when you use our website or
+              engage our services.
             </p>
+
+            {sections.map((section) => (
+              <div key={section.title}>
+                <h2 className="text-lg font-semibold text-white">
+                  {section.title}
+                </h2>
+                <div className="mt-3 space-y-3">
+                  {section.body.map((paragraph) => (
+                    <p
+                      key={paragraph.slice(0, 32)}
+                      className="text-sm leading-relaxed text-fg-muted"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            <div>
+              <h2 className="text-lg font-semibold text-white">
+                7. Contact us
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                Questions about this policy or our security protocols? Email{" "}
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                >
+                  {site.email}
+                </a>{" "}
+                or call{" "}
+                <a
+                  href={`tel:${site.phoneHref}`}
+                  className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                >
+                  {site.phone}
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </PageTransition>
   );
 }

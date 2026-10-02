@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/data";
 import { SectionHeading } from "@/components/UI";
+import PageTransition from "@/components/PageTransition";
 import {
   InstagramIcon,
   LinkedInIcon,
@@ -44,9 +45,9 @@ const channels = [
 
 export default function ContactPage() {
   return (
-    <>
+    <PageTransition>
       <section className="border-b border-hairline">
-        <div className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
+        <div data-blur className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
           <SectionHeading
             title="Let's talk about your project."
             description="Fill in the form or reach out directly — we reply within one business day. NDAs available before any details are shared."
@@ -55,7 +56,10 @@ export default function ContactPage() {
       </section>
 
       <section className="border-b border-hairline">
-        <div className="container-x grid gap-12 py-16 md:grid-cols-[1fr_320px] md:py-20">
+        <div
+          data-blur
+          className="container-x grid gap-12 py-16 md:grid-cols-[1fr_320px] md:py-20"
+        >
           <ContactForm />
 
           <aside className="border-t border-hairline md:border-t-0">
@@ -90,6 +94,6 @@ export default function ContactPage() {
           </aside>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }

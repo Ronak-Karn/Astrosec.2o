@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { projects, testimonials } from "@/lib/data";
 import { SectionHeading, CTABand } from "@/components/UI";
 import ProjectCard from "@/components/ProjectCard";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <>
+    <PageTransition>
       <section className="border-b border-hairline">
-        <div className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
+        <div data-blur className="container-x pt-32 pb-16 md:pt-40 md:pb-20">
           <SectionHeading
             title="Real products. Real infrastructure. Shipped."
             description="A sample of what we've built and secured for clients across real estate, dating, education, and fintech."
@@ -22,7 +23,10 @@ export default function ProjectsPage() {
       </section>
 
       <section className="border-b border-hairline">
-        <div className="container-x grid gap-x-8 gap-y-12 py-16 sm:grid-cols-2 md:py-20">
+        <div
+          data-blur
+          className="container-x grid gap-x-8 gap-y-12 py-16 sm:grid-cols-2 md:py-20"
+        >
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
@@ -30,7 +34,7 @@ export default function ProjectsPage() {
       </section>
 
       <section className="border-b border-hairline">
-        <div className="container-x py-16 md:py-20">
+        <div data-blur className="container-x py-16 md:py-20">
           <SectionHeading title="What clients say" />
 
           <div className="mt-10 grid gap-x-10 gap-y-10 md:grid-cols-3">
@@ -54,6 +58,6 @@ export default function ProjectsPage() {
       </section>
 
       <CTABand />
-    </>
+    </PageTransition>
   );
 }

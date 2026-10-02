@@ -3,7 +3,8 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CursorRing from "@/components/CursorRing";
+import BlurObserver from "@/components/BlurObserver";
+import PointerGlow from "@/components/PointerGlow";
 import { site } from "@/lib/data";
 
 const geist = Geist({
@@ -37,7 +38,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geist.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <CursorRing />
+        <noscript>
+          <style>{`[data-blur]{opacity:1 !important;filter:none !important;transform:none !important}`}</style>
+        </noscript>
+        <PointerGlow />
+        <BlurObserver />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
