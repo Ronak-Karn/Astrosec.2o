@@ -30,12 +30,12 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-10 md:flex" aria-label="Main">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm transition-colors duration-150 ${
+              className={`text-base font-medium transition-colors duration-150 ${
                 isActive(item.href)
                   ? "text-white"
                   : "text-fg-muted hover:text-white"

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   AstroSec — pure black & white
-   Monochrome by choice: no accent hue, no monospace, no all-caps.
+   AstroSec — black + electric blue + white
+   Electric blue accent on a monochrome base. No monospace, no all-caps.
    Boldness lives in the type scale and the white full-bleed bands.
    --------------------------------------------------------------- */
 
@@ -16,6 +16,7 @@
   --color-paper: #ffffff; /* white full-bleed bands */
   --color-paper-muted: #555555; /* secondary text on white (AA on #fff) */
   --color-hairline-dark: rgba(0, 0, 0, 0.16); /* hairlines on white */
+  --color-accent: #0066ff; /* electric blue accent */
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
@@ -33,12 +34,12 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-fg);
-  color: var(--color-ink);
+  background-color: var(--color-accent);
+  color: var(--color-fg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-fg);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -178,12 +179,12 @@ a:hover .logo-badge {
 }
 
 .btn-primary {
-  background-color: var(--color-fg);
-  color: var(--color-ink);
+  background-color: var(--color-accent);
+  color: var(--color-fg);
 }
 
 .btn-primary:hover {
-  background-color: #d9d9d9;
+  background-color: #1a73e8;
 }
 
 .btn-primary:disabled {
